@@ -9,7 +9,14 @@ public class Alarm : MonoBehaviour
 
     private Coroutine _current;
 
-    public void EnhancementSound()
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.volume = 0.0f;
+        _speedChange = 0.1f;
+    }
+
+    public void EnlargeSound()
     {
         if (_audioSource.isPlaying == false)
             _audioSource.Play();
@@ -20,20 +27,13 @@ public class Alarm : MonoBehaviour
         _current = StartCoroutine(ChangingVolume(1.0f));
     }
 
-    public void ReductionSound()
+    public void EeduceSound()
     {
         StopCoroutine(_current);
         _current = StartCoroutine(ChangingVolume(0.0f));
 
         if (_audioSource.volume == 0.0f)
             _audioSource.Stop();
-    }
-
-    private void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.volume = 0.0f;
-        _speedChange = 0.1f;
     }
 
     private IEnumerator ChangingVolume(float volume)

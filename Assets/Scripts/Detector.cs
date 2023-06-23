@@ -15,12 +15,12 @@ public class Detector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player player))
-            _alarm.EnhancementSound();
+            _alarm.EnlargeSound();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player player))
-            _alarm.ReductionSound();
+            _alarm.EeduceSound();
     }
 }
